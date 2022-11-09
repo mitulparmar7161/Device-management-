@@ -56,6 +56,8 @@ if(isset($_POST['submit'])){
 
     $_SESSION['email'] = $email;
 
+    $_SESSION['employee']="employee";
+
     header("Location: home.php");
 
 }
