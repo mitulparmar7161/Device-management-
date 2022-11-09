@@ -2,7 +2,7 @@
 
 session_start();
 
-if(isset($_SESSION['email'])){
+if(isset($_SESSION['admin'])){
 
   header("Location: home.php");
 
@@ -23,7 +23,7 @@ if(isset($_SESSION['email'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
@@ -39,9 +39,9 @@ if(isset($_SESSION['email'])){
             <form name="myform" id="myform" action="forgot_logic.php" method="POST" class="px-4 py-3 d-flex align-self-center justify-content-center "  style="margin-top: 220px;">
                 
             <div class="form-group border p-4 " style="width: 500px;">
+
+                <div class="h1 d-flex justify-content-center">Reset Passwod</div>
                 
-            <div class="h1 d-flex justify-content-center">Login</div>
-            
                 <label for="email">Email:</label>
 
                 <input type="text" id="email" name="email" class="form-control" placeholder="Enter Your Email">
@@ -63,10 +63,9 @@ if(isset($_SESSION['email'])){
                 </div>
 
             </form>
-          
+            
 <script>
-
-
+    
 jQuery('#myform').validate({
 
         rules: {
@@ -84,7 +83,7 @@ jQuery('#myform').validate({
                     type: "post",
 
                     async: false,
-                    
+
                     data: {
 
                         email: function () {
@@ -100,12 +99,11 @@ jQuery('#myform').validate({
             },
 
         },
-        
         messages: {
 
             email: {
 
-                remote: "Email is not Registered as an Employee..!"
+                remote: "Email is not Registered as an Admin..!"
 
             },
 
