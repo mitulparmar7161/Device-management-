@@ -38,8 +38,12 @@ $valueToSearch=$_SESSION['search_string'];
       
       $_SESSION['sort_employee']=$sort;
 
+      if($colunm==""){
+        $query="select * from user  WHERE CONCAT(`name`, `email`, `phone`,`doj`,`role`) LIKE '%".$valueToSearch."%' LIMIT $start_from, $limit";
+      }
+      else{
       $query="select * from user  WHERE CONCAT(`name`, `email`, `phone`,`doj`,`role`) LIKE '%".$valueToSearch."%'  order by $colunm $sort  LIMIT $start_from, $limit";
-
+      }
     }
 
     else{

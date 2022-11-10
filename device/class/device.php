@@ -37,9 +37,13 @@ $valueToSearch=$_SESSION['search_string'];
       $sort=$_GET['sort'];
 
       $_SESSION['sort']=$sort;
+if($colunm==""){
+  $query="select * from device  WHERE CONCAT(`type`, `device_name`, `status`) LIKE '%".$valueToSearch."%' LIMIT $start_from, $limit";
+}
+else{
 
       $query="select * from device  WHERE CONCAT(`type`, `device_name`, `status`) LIKE '%".$valueToSearch."%'  order by $colunm $sort  LIMIT $start_from, $limit";
-
+}
     }
 
     else{

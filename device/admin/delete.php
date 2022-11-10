@@ -9,9 +9,7 @@ class deleteData{
 
       mysqli_query($connect,$query);
 
-
     }
-
 
 }
 
@@ -19,13 +17,11 @@ $deleteobj = new deleteData;
 
 if(isset($_POST['deleteEmp'])){
 
+$id=$_POST['deleteEmp'];
 
-$id=$_POST['deleteEmp'];    
 $deleteobj->delete("user",$id);
 
 }
-
-
 
 if(isset($_POST['deleteDevice'])){
 

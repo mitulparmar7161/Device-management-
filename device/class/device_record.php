@@ -1,10 +1,10 @@
+
 <?php
-  
+
 // CRUD For Device Record Table 
 
 class Device_record{
   
-
 // Fetch Data From Device Record Table
 
 public function fetchData(){
@@ -22,7 +22,6 @@ public function fetchData(){
     $_SESSION['colunm_device']='';
 
     $_SESSION['sort_device']='';
-
 
     if(isset($_GET['searchdata'])){
 
@@ -47,11 +46,16 @@ public function fetchData(){
       
       $sort=$_GET['sort'];
 
-      $_SESSION['sort_device']=$sort;
+      $_SESSION['sort_device']=$sort;   
 
+      if($colunm==""){
+        $query="select user.name, device_record.id, device.device_name,device_record.device_id,device_record.request_time,device_record.assigned_time,device_record.return_time,device_record.reject_time,device_record.status,device_record.emp_id  from device_record  inner join device on device.id=device_record.device_id  inner join user on user.id=device_record.emp_id WHERE name LIKE '%".$search_name."%' and CONCAT(`device_name`,`name`,`request_time`,`assigned_time`,`return_time`,`reject_time`) LIKE '%".$valueToSearch."%' order by 
+      request_time DESC LIMIT $start_from, $limit";
+      }
+      else{
       $query="select user.name, device_record.id, device.device_name,device_record.device_id,device_record.request_time,device_record.assigned_time,device_record.return_time,device_record.reject_time,device_record.status,device_record.emp_id  from device_record  inner join device on device.id=device_record.device_id  inner join user on user.id=device_record.emp_id WHERE name LIKE '%".$search_name."%' and CONCAT(`device_name`,`name`,`request_time`,`assigned_time`,`return_time`,`reject_time`) LIKE '%".$valueToSearch."%' order by 
       $colunm $sort LIMIT $start_from, $limit";
-
+      }
     }
 
     else{
